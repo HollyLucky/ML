@@ -58,7 +58,29 @@ def datingClassTest():
          if(classifierResult!=datingLabels[i]):
              errorCount+=1.0
          print('the total error rate is :%f'%(errorCount/float(numTestVecs)))
-
+def img2vector(filename):
+    returnVect=zeros((1,1024))
+    fr=open(filename)
+    for i in range(32):
+        lineStr=fr.readline()
+        for j in range(32):
+            returnVect[0,32*i+j]=int(lineStr[j])
+    return returnVect
+testVector=img2vector('trainingDigits/0_13.txt')
+print(testVector[0,0:31])
+print(testVector[0,32:63])
+# def classifyPerson():
+#     resultList=['not at all','in small does','in large does']
+#     percentTats=float(input("percentage of time spent playing video games?"))
+#     ffMiles=float(input("frequent flier miles earned per year?"))
+#     iceCream=float(input("liters of ice cream consumed per year?"))
+#     datingDataMat,datingLabels=file2matrix('datingTestSet2.txt')
+#     normMat,ranges,minVals=autoNorm(datingDataMat)
+#     print(normMat,ranges,minVals)
+#     inArr=array([ffMiles,percentTats,iceCream])
+#     print('inArr:',inArr)
+#     classifierResult=classify0((inArr-minVals)/ranges,normMat,datingLabels,3)
+#     print('You will probably like this people: ',classifierResult)
 # if __name__=='__main__':
 #     print('dataset-labels')
 #     print(createDateSet())
@@ -74,4 +96,6 @@ def datingClassTest():
 # print('norMat:',norMat)
 # print('ranges:',ranges)
 # print('minVals:',minVals)
-datingClassTest()
+# datingClassTest()
+# classifyPerson()
+
